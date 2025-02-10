@@ -134,7 +134,10 @@ export default function Page() {
                     </SelectItem>
                   ))
                 ) : (
-                  <SelectItem disabled>No patents available</SelectItem>
+                  <SelectItem value="none" disabled>
+                            No patents available
+                            </SelectItem>
+
                 )}
               </SelectContent>
             </Select>
