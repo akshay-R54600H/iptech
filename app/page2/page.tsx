@@ -61,7 +61,10 @@ export default function PatentApp() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 relative">
+  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f')] bg-fixed opacity-5"></div>
+  <div className="absolute inset-0 bg-gradient-to-br from-slate-50/90 to-blue-50/90"></div>
+  <div className="relative">
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
           <nav className="flex items-center space-x-4">
@@ -123,7 +126,7 @@ export default function PatentApp() {
         </div>
 
         <div className="md:col-span-2">
-          <Card className="border-blue-100 shadow-lg hover:shadow-xl transition-shadow">
+          <Card className="border-blue-100 shadow-lg hover-lift animate-fade-in">
             <CardHeader>
               <CardTitle className="text-blue-900">Add Your Patent</CardTitle>
             </CardHeader>
@@ -211,6 +214,7 @@ export default function PatentApp() {
           </Card>
         </div>
       </div>
+    </div>
     </div>
   );
 }
