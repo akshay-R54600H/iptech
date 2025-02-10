@@ -22,7 +22,7 @@ export default function PatentApp() {
 
   const [uploadMessage, setUploadMessage] = useState<string | null>(null);
 
-  const BACKEND_URL = "http://15.206.27.67:5001"; // Replace with actual Flask server IP
+  const BACKEND_URL = "http://15.206.27.67:5001"; // Replace with actual file handler server IP
 
   // Handle text input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
