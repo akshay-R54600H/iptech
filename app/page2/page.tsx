@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -172,7 +171,7 @@ export default function PatentApp() {
                     value={formData.additionalData} 
                     onChange={handleInputChange} 
                     placeholder="Enter additional data"
-                    className="border-blue-100 focus:border-blue-300 transition-colors"
+                    className="border-blue-100 focus:border-blue-300 transition-colors min-h-[150px] text-base leading-relaxed p-4"
                   />
                 </div>
 

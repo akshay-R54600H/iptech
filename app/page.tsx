@@ -57,7 +57,7 @@ export default function Page() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex flex-col"> {/* Added flex and flex-col for better layout */}
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex flex-col">
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
           <nav className="flex items-center space-x-4">
@@ -76,15 +76,15 @@ export default function Page() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl p-4 flex-grow"> {/* Added flex-grow to make main take up remaining space */}
-        <div className="grid grid-cols-[300px,1fr] gap-6">
+      <main className="mx-auto max-w-7xl p-4 flex-grow">
+        <div className="grid grid-cols-1 lg:grid-cols-[280px,1fr] gap-6">
           <div className="space-y-4">
             <Link href="/page2">
               <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">New Patents</Button>
             </Link>
             <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">My Patents</Button>
 
-            <Card className="border-blue-100 shadow-md hover-lift animate-fade-in"> {/* Applied the change */}
+            <Card className="border-blue-100 shadow-md hover-lift animate-fade-in">
               <CardHeader>
                 <CardTitle className="text-base text-blue-900">Features</CardTitle>
               </CardHeader>
@@ -147,7 +147,7 @@ export default function Page() {
                 <CardTitle className="text-blue-900">Output</CardTitle>
               </CardHeader>
               <CardContent>
-                <Textarea readOnly value={output} className="min-h-[128px] bg-blue-50/50 border-blue-100" />
+                <Textarea readOnly value={output} className="min-h-[256px] bg-blue-50/50 border-blue-100" /> {/* Increased min-height */}
               </CardContent>
             </Card>
 
@@ -161,9 +161,9 @@ export default function Page() {
             </Card>
 
             <div className="grid grid-cols-2 gap-4">
-              <Button 
-                onClick={handleGenerateResult} 
-                disabled={loading} 
+              <Button
+                onClick={handleGenerateResult}
+                disabled={loading}
                 className="bg-gradient-to-r from-slate-800 to-slate-900 text-white hover:from-slate-900 hover:to-black transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
               >
                 {loading ? "Generating..." : "Generate Result"}
