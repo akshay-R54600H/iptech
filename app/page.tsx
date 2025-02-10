@@ -116,7 +116,7 @@ export default function Page() {
             </Card>
 
             <div className="text-center text-sm text-gray-600">Your Plan</div>
-            <Button className="w-full bg-[#2D3748] text-white hover:bg-[#1a202c]">Upgrade</Button>
+            <Button className="w-full bg-[#2D3748] text-white hover:bg-[#1a202c]">Upgrade now</Button>
           </div>
 
           {/* Main Content */}
@@ -134,7 +134,7 @@ export default function Page() {
                     </SelectItem>
                   ))
                 ) : (
-                  <SelectItem value=" " disabled>No patents available</SelectItem>
+                  <SelectItem value="no-patents" disabled>No patents available</SelectItem>
                 )}
               </SelectContent>
             </Select>
