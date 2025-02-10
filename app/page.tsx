@@ -57,7 +57,9 @@ export default function Page() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex flex-col relative">
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234299e1' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
+      <div className="relative">
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
           <nav className="flex items-center space-x-4">
@@ -138,7 +140,21 @@ export default function Page() {
               </CardHeader>
               <CardContent>
                 <h3 className="mb-4 text-blue-600">What is an Elevator Pitch?</h3>
-                <div className="h-32 rounded-lg bg-blue-50/50"></div>
+                <p className="text-gray-700 mb-4">An elevator pitch is a brief, persuasive speech that you use to spark interest in your patent. A good elevator pitch should be engaging, memorable, and succinct - typically delivered in the time it takes to ride an elevator (30-60 seconds).</p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <h4 className="font-medium text-blue-800 mb-2">Clear & Concise</h4>
+                    <p className="text-sm text-gray-600">Deliver your message in a clear, straightforward manner</p>
+                  </div>
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <h4 className="font-medium text-blue-800 mb-2">Value Proposition</h4>
+                    <p className="text-sm text-gray-600">Highlight the unique benefits and advantages</p>
+                  </div>
+                  <div className="p-4 bg-blue-50 rounded-lg">
+                    <h4 className="font-medium text-blue-800 mb-2">Call to Action</h4>
+                    <p className="text-sm text-gray-600">End with a clear next step or request</p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
@@ -175,6 +191,7 @@ export default function Page() {
           </div>
         </div>
       </main>
+    </div>
     </div>
   );
 }
