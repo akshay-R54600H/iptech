@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
-import { Moon, Sun } from "lucide-react";
 import axios from "axios";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -106,10 +104,8 @@ export default function Page() {
     }
   };
 
-  const { theme, setTheme } = useTheme();
-  
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-background/80 flex flex-col relative transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex flex-col relative">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234299e1' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
       <div className="relative">
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
@@ -120,18 +116,7 @@ export default function Page() {
             <Button variant="ghost" className="hover:bg-blue-50 transition-colors">FAQ</Button>
             <Button variant="ghost" className="hover:bg-blue-50 transition-colors">Contact</Button>
           </nav>
-          <div className="flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-            <div className="flex items-center space-x-2 rounded-full bg-primary/5 px-4 py-2 shadow-sm">
+          <div className="flex items-center space-x-2 rounded-full bg-blue-50/50 px-4 py-2 shadow-sm">
             <span className="text-sm font-medium text-blue-900">Credits - 100</span>
             <Avatar className="h-8 w-8 ring-2 ring-blue-100">
               <AvatarImage src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/39525357-796a-403c-be40-ea7e0904abbb.jpg-yq5O3L66aB2qpRMUXq7VxWlacQXMpn.jpeg" alt="User" />
