@@ -115,7 +115,7 @@ export default function Page() {
               </CardContent>
             </Card>
 
-            <div className="text-center text-sm text-gray-600">Your Plan - Personal</div>
+            <div className="text-center text-sm text-gray-600">Your Plan</div>
             <Button className="w-full bg-[#2D3748] text-white hover:bg-[#1a202c]">Upgrade</Button>
           </div>
 
