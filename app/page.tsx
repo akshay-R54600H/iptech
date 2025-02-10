@@ -15,6 +15,54 @@ export default function Page() {
   const [output, setOutput] = useState<string>("Generated output will appear here...");
   const [loading, setLoading] = useState<boolean>(false);
   const [patents, setPatents] = useState<string[]>([]);
+  const [selectedFeature, setSelectedFeature] = useState<string>("elevator_pitch");
+
+  const featureContent = {
+    elevator_pitch: {
+      title: "Elevator Pitch",
+      description: "A brief, persuasive speech about your patent delivered in 30-60 seconds."
+    },
+    pitch_deck: {
+      title: "Pitch Deck",
+      description: "A comprehensive presentation that outlines your patent's value proposition, market potential, and business strategy. It typically includes 10-12 slides covering key aspects like problem statement, solution, market size, competition, and monetization strategy."
+    },
+    sales_pitch: {
+      title: "Sales Pitch",
+      description: "A focused presentation on the commercial benefits of your patent."
+    },
+    brochure: {
+      title: "Brochure",
+      description: "A detailed document showcasing your patent's features and benefits."
+    },
+    one_pager: {
+      title: "One Pager",
+      description: "A single-page summary of your patent."
+    },
+    industry_brochure: {
+      title: "Industry Brochure",
+      description: "A brochure specifically tailored for your industry."
+    },
+    competitors_analysis: {
+      title: "Competitors Analysis",
+      description: "An analysis of your competitors in the market."
+    },
+    swot_analysis: {
+      title: "SWOT Analysis",
+      description: "A SWOT analysis of your patent."
+    },
+    target_firms: {
+      title: "Target Firms",
+      description: "A list of target firms for your patent."
+    },
+    patent_valuation: {
+      title: "Patent Valuation",
+      description: "An estimation of your patent's value."
+    },
+    market_place: {
+      title: "Market Place",
+      description: "Information about the market place for your patent."
+    },
+  };
 
   useEffect(() => {
     const fetchPatents = async () => {
@@ -40,7 +88,7 @@ export default function Page() {
 
     const payload = {
       file_path: `uploads/${selectedPatent}`,
-      document_type: "elevator pitch",
+      document_type: selectedFeature, // Use selectedFeature here
       embedding_model_name: "all-MiniLM-L6-v2",
       persist_directory: "vector_store",
     };
@@ -92,21 +140,30 @@ export default function Page() {
               </CardHeader>
               <CardContent className="space-y-2">
                 {[
-                  "Elevators pitch",
-                  "Pitch deck",
-                  "Sales Pitch",
-                  "Brochure",
-                  "One Pager",
-                  "Industry Brochure",
-                  "Competitors Analysis",
-                  "SWOT Analysis",
-                  "Target Firms",
-                  "Patent Valuation",
-                  "Market place",
+                  { id: "elevator_pitch", label: "Elevator Pitch" },
+                  { id: "pitch_deck", label: "Pitch Deck" },
+                  { id: "sales_pitch", label: "Sales Pitch" },
+                  { id: "brochure", label: "Brochure" },
+                  { id: "one_pager", label: "One Pager" },
+                  { id: "industry_brochure", label: "Industry Brochure" },
+                  { id: "competitors_analysis", label: "Competitors Analysis" },
+                  { id: "swot_analysis", label: "SWOT Analysis" },
+                  { id: "target_firms", label: "Target Firms" },
+                  { id: "patent_valuation", label: "Patent Valuation" },
+                  { id: "market_place", label: "Market Place" },
                 ].map((feature) => (
-                  <Button key={feature} variant="ghost" className="w-full justify-start text-sm font-normal hover:bg-blue-50 hover:text-blue-700 transition-colors">
+                  <Button
+                    key={feature.id}
+                    variant={selectedFeature === feature.id ? "default" : "ghost"}
+                    className={`w-full justify-start text-sm font-normal transition-colors ${
+                      selectedFeature === feature.id
+                        ? "bg-blue-500 text-white hover:bg-blue-600"
+                        : "hover:bg-blue-50 hover:text-blue-700"
+                    }`}
+                    onClick={() => setSelectedFeature(feature.id)}
+                  >
                     <ChevronRight className="mr-2 h-4 w-4" />
-                    {feature}
+                    {feature.label}
                   </Button>
                 ))}
               </CardContent>
@@ -136,25 +193,11 @@ export default function Page() {
 
             <Card className="border-blue-100 shadow-md hover-lift animate-fade-in">
               <CardHeader>
-                <CardTitle className="text-blue-900">Elevator Pitch</CardTitle>
+                <CardTitle className="text-blue-900">{featureContent[selectedFeature]?.title || "Select a Feature"}</CardTitle>
               </CardHeader>
               <CardContent>
-                <h3 className="mb-4 text-blue-600">What is an Elevator Pitch?</h3>
-                <p className="text-gray-700 mb-4">An elevator pitch is a brief, persuasive speech that you use to spark interest in your patent. A good elevator pitch should be engaging, memorable, and succinct - typically delivered in the time it takes to ride an elevator (30-60 seconds).</p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                  <div className="p-4 bg-blue-50 rounded-lg">
-                    <h4 className="font-medium text-blue-800 mb-2">Clear & Concise</h4>
-                    <p className="text-sm text-gray-600">Deliver your message in a clear, straightforward manner</p>
-                  </div>
-                  <div className="p-4 bg-blue-50 rounded-lg">
-                    <h4 className="font-medium text-blue-800 mb-2">Value Proposition</h4>
-                    <p className="text-sm text-gray-600">Highlight the unique benefits and advantages</p>
-                  </div>
-                  <div className="p-4 bg-blue-50 rounded-lg">
-                    <h4 className="font-medium text-blue-800 mb-2">Call to Action</h4>
-                    <p className="text-sm text-gray-600">End with a clear next step or request</p>
-                  </div>
-                </div>
+                <h3 className="mb-4 text-blue-600">What is a {featureContent[selectedFeature]?.title}?</h3>
+                <p className="text-gray-700 mb-4">{featureContent[selectedFeature]?.description || "Please select a feature from the sidebar to view its description."}</p>
               </CardContent>
             </Card>
 
