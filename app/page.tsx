@@ -9,13 +9,15 @@ import { ChevronRight } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
+import { saveAs } from "file-saver";
 
 export default function Page() {
   const [selectedPatent, setSelectedPatent] = useState<string | null>(null);
   const [output, setOutput] = useState<string>("Generated output will appear here...");
   const [loading, setLoading] = useState<boolean>(false);
   const [patents, setPatents] = useState<string[]>([]);
-  const [selectedFeature, setSelectedFeature] = useState<string>("elevator_pitch");
+  type FeatureKey = keyof typeof featureContent;
+  const [selectedFeature, setSelectedFeature] = useState<FeatureKey>("elevator_pitch");
 
   const featureContent = {
     elevator_pitch: {
@@ -62,6 +64,21 @@ export default function Page() {
       title: "Market Place",
       description: "Information about the market place for your patent."
     },
+  };
+
+  const handleDownloadResult = async () => {
+    try {
+      const response = await axios.post(
+        "http://15.206.27.67:5000/download",
+        { generatedText: output }, // send the result text to backend
+        { responseType: "blob" }    // important for file downloads
+      );
+  
+      const blob = new Blob([response.data], { type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" });
+      saveAs(blob, "GeneratedResult.docx");
+    } catch (error) {
+      console.error("Error downloading the result:", error);
+    }
   };
 
   useEffect(() => {
@@ -160,7 +177,7 @@ export default function Page() {
                         ? "bg-blue-500 text-white hover:bg-blue-600"
                         : "hover:bg-blue-50 hover:text-blue-700"
                     }`}
-                    onClick={() => setSelectedFeature(feature.id)}
+                    onClick={() => setSelectedFeature(feature.id as FeatureKey)}
                   >
                     <ChevronRight className="mr-2 h-4 w-4" />
                     {feature.label}
@@ -203,6 +220,15 @@ export default function Page() {
 
             <Card className="border-blue-100 shadow-md hover-lift animate-fade-in">
               <CardHeader>
+                <CardTitle className="text-blue-900">Additional Information</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <Textarea placeholder="Enter additional information here..." className="min-h-[128px] border-blue-100" />
+              </CardContent>
+            </Card>
+
+            <Card className="border-blue-100 shadow-md hover-lift animate-fade-in">
+              <CardHeader>
                 <CardTitle className="text-blue-900">Output</CardTitle>
               </CardHeader>
               <CardContent>
@@ -210,14 +236,7 @@ export default function Page() {
               </CardContent>
             </Card>
 
-            <Card className="border-blue-100 shadow-md hover-lift animate-fade-in">
-              <CardHeader>
-                <CardTitle className="text-blue-900">Additional Information</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Textarea placeholder="Enter additional information here..." className="min-h-[128px] border-blue-100" />
-              </CardContent>
-            </Card>
+            
 
             <div className="grid grid-cols-2 gap-4">
               <Button
