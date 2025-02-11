@@ -9,7 +9,7 @@ import { ChevronRight } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
-import { saveAs } from "file-saver";
+
 
 export default function Page() {
   const [selectedPatent, setSelectedPatent] = useState<string | null>(null);
@@ -66,20 +66,10 @@ export default function Page() {
     },
   };
 
-  const handleDownloadResult = async () => {
-    try {
-      const response = await axios.post(
-        "http://15.206.27.67:5000/download",
-        { generatedText: output }, // send the result text to backend
-        { responseType: "blob" }    // important for file downloads
-      );
+
   
-      const blob = new Blob([response.data], { type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" });
-      saveAs(blob, "GeneratedResult.docx");
-    } catch (error) {
-      console.error("Error downloading the result:", error);
-    }
-  };
+   
+    
 
   useEffect(() => {
     const fetchPatents = async () => {
