@@ -254,6 +254,9 @@ export default function Page() {
         </div>
       </main>
     </div>
+    <footer className="text-center py-4 text-gray-600">
+        Made with <span className="text-red-500">❤️</span> by Squirrel IP
+      </footer>
     </div>
   );
 }
