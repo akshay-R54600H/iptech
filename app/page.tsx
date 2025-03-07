@@ -18,6 +18,8 @@ export default function Page() {
   const [patents, setPatents] = useState<string[]>([]);
   type FeatureKey = keyof typeof featureContent;
   const [selectedFeature, setSelectedFeature] = useState<FeatureKey>("elevator_pitch");
+  const [additionalInfo, setAdditionalInfo] = useState<string>("");
+
 
   const featureContent = {
     elevator_pitch: {
@@ -89,17 +91,18 @@ export default function Page() {
       alert("Please select a patent before generating a result.");
       return;
     }
-
+  
     setLoading(true);
     setOutput("Generating... Please wait.");
-
+  
     const payload = {
       file_path: `uploads/${selectedPatent}`,
-      document_type: selectedFeature, // Use selectedFeature here
+      document_type: selectedFeature, 
       embedding_model_name: "all-MiniLM-L6-v2",
       persist_directory: "vector_store",
+      additional_info: additionalInfo,  
     };
-
+  
     try {
       const response = await axios.post("http://15.206.27.67:5000/process", payload);
       setOutput(response.data.generated_text);
@@ -110,6 +113,7 @@ export default function Page() {
       setLoading(false);
     }
   };
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex flex-col relative">
@@ -213,7 +217,13 @@ export default function Page() {
                 <CardTitle className="text-blue-900">Additional Information</CardTitle>
               </CardHeader>
               <CardContent>
-                <Textarea placeholder="Enter additional information here..." className="min-h-[128px] border-blue-100" />
+              <Textarea 
+                  placeholder="Enter additional information here..." 
+                  className="min-h-[128px] border-blue-100"
+                  value={additionalInfo}  // Bind state
+                  onChange={(e) => setAdditionalInfo(e.target.value)}
+                    />
+
               </CardContent>
             </Card>
 
