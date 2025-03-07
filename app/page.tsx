@@ -22,7 +22,7 @@ export default function Page() {
 
 
   const featureContent = {
-    elevator_pitch: {
+    elevator_pitch: { 
       title: "Elevator Pitch",
       description: "A brief, persuasive speech about your patent delivered in 30-60 seconds."
     },
