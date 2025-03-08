@@ -76,7 +76,7 @@ export default function Page() {
   useEffect(() => {
     const fetchPatents = async () => {
       try {
-        const response = await axios.get("http://15.206.27.67:5001/uploads");
+        const response = await axios.get("http://15.206.27.67:5000/uploads");
         setPatents(response.data.files);
       } catch (error) {
         console.error("Error fetching patents:", error);

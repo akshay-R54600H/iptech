@@ -22,7 +22,7 @@ export default function PatentApp() {
 
   const [uploadMessage, setUploadMessage] = useState<string | null>(null);
 
-  const BACKEND_URL = "http://15.206.27.67:5001";
+  const BACKEND_URL = "http://15.206.27.67:5000";
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
