@@ -89,7 +89,7 @@ export default function Page() {
     const fetchPatents = async () => {
       setPatentsLoading(true)
       try {
-        const response = await axios.get("http://13.126.149.50:5000/uploads")
+        const response = await axios.get("http://13.126.149.50:5000/list-files")
         setPatents(response.data.files)
       } catch (error) {
         console.error("Error fetching patents:", error)
