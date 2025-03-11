@@ -164,9 +164,9 @@ export default function Page() {
                   {navOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                 </Button>
               )}
-              <div className="font-semibold text-lg">Squirrel IP</div>
+              <div className="font-semibold text-lg whitespace-nowrap mr-auto">Squirrel IP</div>
             </div>
-            <nav className="hidden lg:flex items-center space-x-4">
+            <nav className="hidden lg:flex justify-center w-full">
               <Button variant="ghost" className="hover:bg-accent transition-colors">
                 Home
               </Button>
@@ -180,16 +180,7 @@ export default function Page() {
                 Contact
               </Button>
             </nav>
-            <div className="flex items-center space-x-2 rounded-full bg-accent/50 px-4 py-2">
-              <span className="text-sm font-medium">Credits - 100</span>
-              <Avatar className="h-8 w-8 ring-1 ring-border">
-                <AvatarImage
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/39525357-796a-403c-be40-ea7e0904abbb.jpg-yq5O3L66aB2qpRMUXq7VxWlacQXMpn.jpeg"
-                  alt="User"
-                />
-                <AvatarFallback>U</AvatarFallback>
-              </Avatar>
-            </div>
+            
           </div>
         </header>
 

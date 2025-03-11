@@ -105,9 +105,9 @@ export default function PatentApp() {
                   {navOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                 </Button>
               )}
-              <div className="font-semibold text-lg">Squirrel IP</div>
+              <div className="font-semibold text-lg whitespace-nowrap mr-auto">Squirrel IP</div>
             </div>
-            <nav className="flex items-center space-x-4">
+            <nav className="hidden lg:flex justify-center w-full">
               <Link href="/">
                 <Button variant="ghost" className="hover:bg-accent transition-colors">
                   Home

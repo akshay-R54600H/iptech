@@ -55,7 +55,7 @@ def process_patent():
     persist_directory = data.get('persist_directory', 'vector_store')
     model_name = data.get('model_name', 'llama3')
     additional_info = data.get('additional_info', '')
-
+    
     # Initialize processor
     processor = PatentProcessor(file_path, embedding_model_name)
     processor.process_documents()
