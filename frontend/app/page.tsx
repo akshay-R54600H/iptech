@@ -89,7 +89,7 @@ export default function Page() {
     const fetchPatents = async () => {
       setPatentsLoading(true)
       try {
-        const response = await axios.get("http://15.206.27.67:5000/uploads")
+        const response = await axios.get("http://13.126.149.50:5000/uploads")
         setPatents(response.data.files)
       } catch (error) {
         console.error("Error fetching patents:", error)
@@ -120,7 +120,7 @@ export default function Page() {
     }
 
     try {
-      const response = await axios.post("http://15.206.27.67:5000/process", payload)
+      const response = await axios.post("http://13.126.149.50:5000/process", payload)
       setOutput(response.data.generated_text)
       setNotification({ type: 'success', message: "Result generated successfully." })
     } catch (error) {

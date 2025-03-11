@@ -30,7 +30,7 @@ export default function PatentApp() {
   const [notification, setNotification] = useState<{ type: 'success' | 'error' | 'info'; message: string } | null>(null)
   const isMobile = useMobile()
 
-  const BACKEND_URL = "http://15.206.27.67:5000"
+  const BACKEND_URL = "http://13.126.149.50:5000"
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
